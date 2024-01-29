@@ -31,7 +31,7 @@ namespace VechileManagement.Application.Features.VechileModel.Handlers.Commands
                 response.Errors = new List<string> { "Vechile Model Not Found." };
                 return response;
             }
-            await _unitOfWork.VechileModelRepository.DeleteAsync(vechileModel);
+            await _unitOfWork.VechileModelRepository.SoftDeleteAsync(vechileModel);
             await _unitOfWork.Save();
 
             response.Success = true;

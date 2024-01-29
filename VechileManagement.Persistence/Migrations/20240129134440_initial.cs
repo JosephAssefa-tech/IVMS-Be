@@ -29,7 +29,8 @@ namespace VechileManagement.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,7 +46,8 @@ namespace VechileManagement.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,7 +65,8 @@ namespace VechileManagement.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,7 +107,8 @@ namespace VechileManagement.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,13 +123,13 @@ namespace VechileManagement.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Factories",
-                columns: new[] { "Id", "Created", "CreatedBy", "FactoryName", "LastModified", "LastModifiedBy" },
+                columns: new[] { "Id", "Created", "CreatedBy", "FactoryName", "IsDeleted", "LastModified", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Hyundai", null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Toyota", null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Suzuki", null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Ford", null, null }
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Hyundai", false, null, null },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Toyota", false, null, null },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Suzuki", false, null, null },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Ford", false, null, null }
                 });
 
             migrationBuilder.CreateIndex(

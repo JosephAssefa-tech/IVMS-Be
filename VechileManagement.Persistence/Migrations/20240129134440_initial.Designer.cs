@@ -12,7 +12,7 @@ using VechileManagement.Persistence;
 namespace VechileManagement.Persistence.Migrations
 {
     [DbContext(typeof(VechileMgtDbContext))]
-    [Migration("20240117123233_initial")]
+    [Migration("20240129134440_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -43,6 +43,9 @@ namespace VechileManagement.Persistence.Migrations
 
                     b.Property<int>("CustomerType")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
@@ -76,6 +79,9 @@ namespace VechileManagement.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
@@ -91,25 +97,29 @@ namespace VechileManagement.Persistence.Migrations
                         {
                             Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"),
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Hyundai"
+                            FactoryName = "Hyundai",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"),
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Toyota"
+                            FactoryName = "Toyota",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"),
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Suzuki"
+                            FactoryName = "Suzuki",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"),
                             Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Ford"
+                            FactoryName = "Ford",
+                            IsDeleted = false
                         });
                 });
 
@@ -127,6 +137,9 @@ namespace VechileManagement.Persistence.Migrations
 
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
@@ -182,6 +195,9 @@ namespace VechileManagement.Persistence.Migrations
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");

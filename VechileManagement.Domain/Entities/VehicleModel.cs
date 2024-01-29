@@ -31,6 +31,7 @@ namespace VechileManagement.Domain.Entities
         // Navigation property
         public Factory Factory { get; set; }
         public FuelType FuelType { get; set; }
+      
 
 
 

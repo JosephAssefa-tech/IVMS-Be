@@ -1,5 +1,6 @@
 ﻿using VechileManagement.Application.Contracts.Persitence;
 using Microsoft.EntityFrameworkCore;
+using VechileManagement.Domain.Common;
 
 namespace VechileManagement.Persistence.Repositories
 {
@@ -15,6 +16,13 @@ namespace VechileManagement.Persistence.Repositories
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
+        //public async Task<IReadOnlyList<T>> GetAllAsyncSoftDeleted()
+        //{
+        //    return await _dbContext.Set<T>().Where(entity =>
+        //        entity.IsDeleted
+        //    ).ToListAsync();
+        //}
+
 
         public virtual async Task<T> GetByIdAsync(Guid Id)
         {
@@ -34,5 +42,26 @@ namespace VechileManagement.Persistence.Repositories
         {
             _dbContext.Set<T>().Remove(entity);
         }
+
+        public async Task SoftDeleteAsync(T entity)
+        {
+       
+                if (entity is BaseAuditableEntity baseAuditableEntity)
+                {
+                    baseAuditableEntity.IsDeleted = true;
+
+                    // Log or debug the entity state
+                    Console.WriteLine($"Entity State before modification: {_dbContext.Entry(entity).State}");
+
+                    _dbContext.Entry(entity).State = EntityState.Modified;
+
+                    // Log or debug the entity state after modification
+                    Console.WriteLine($"Entity State after modification: {_dbContext.Entry(entity).State}");
+                }
+        
+
+        }
+
+     
     }
 }

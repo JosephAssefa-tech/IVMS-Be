@@ -11,5 +11,7 @@ namespace VechileManagement.Domain.Common
         public DateTime? LastModified { get; set; }
 
         public string? LastModifiedBy { get; set; }
+        public bool IsDeleted { get; set; }
     }
+
 }
