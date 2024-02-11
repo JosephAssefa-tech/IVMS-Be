@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -6,10 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Country\**" />
+    <EmbeddedResource Remove="Features\Country\**" />
+    <None Remove="Features\Country\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="ClosedXML" Version="0.102.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.1" />
     <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Factories\Validators\" />
+    <Folder Include="Features\Factories\Handlers\Queries\" />
+    <Folder Include="Features\Factories\Requests\Requests\" />
     <Folder Include="Features\Orders\Handlers\" />
     <Folder Include="Features\Orders\Responses\" />
     <Folder Include="Features\Orders\Requests\" />

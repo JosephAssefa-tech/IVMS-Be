@@ -32,13 +32,5 @@ namespace VechileManagement.Domain.Entities
         public Factory Factory { get; set; }
         public FuelType FuelType { get; set; }
       
-
-
-
-
-
-
-
-
     }
 }

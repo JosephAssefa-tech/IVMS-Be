@@ -26,6 +26,9 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Set the license context to be non-commercial if you are using EPPlus for non-commercial purposes
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

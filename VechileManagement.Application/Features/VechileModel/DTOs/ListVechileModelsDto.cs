@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using VechileManagement.Application.Common;
+using VechileManagement.Application.Features.Factories.DTOs;
 using VechileManagement.Domain.Enums;
 
 namespace VechileManagement.Application.Features.VechileModel.DTOs
 {
-    public class ListVechileModelsDto : BaseDTO
+    public class ListGetCountriesDto : BaseDTO
     {
         public string Model { get; set; }
         public decimal Width { get; set; }
@@ -29,7 +30,7 @@ namespace VechileManagement.Application.Features.VechileModel.DTOs
         // Foreign key property
         //public Guid FactoryId { get; set; }
         // Navigation property
-        // public Factory Factory { get; set; }
+         public FactoryDto Factory { get; set; }
         public FuelType FuelType { get; set; }
     }
 }

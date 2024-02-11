@@ -7,7 +7,9 @@ namespace VechileManagement.Domain.Entities
 {
     public  class Factory: BaseAuditableEntity
     {
-        public string FactoryName { get; set; }
+        public string FactoryNameAmh { get; set; }
+        public string FactoryNameEng { get; set; }
+        public decimal Code { get; set; }
 
     }
 }

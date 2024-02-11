@@ -28,15 +28,14 @@ namespace VechileManagement.Application.Features.VechileModel.Handlers.Queries
         {
             //if you want to get all the data without filtering use the below commented code
             // var vechiles = (await _unitOfWork.VechileModelRepository.GetAllAsync()).OrderBy(c => c.Created);
-            var vechiles = (await _unitOfWork.VechileModelRepository.GetAllAsync())
-     .Where(c => !c.IsDeleted)
+            var vechiles = (await _unitOfWork.VechileModelRepository.GetAllVechileModelAsync())
      .OrderBy(c => c.Created);
 
 
 
             var response = new GetVechilesModelResponse();
             response.Success = true;
-            response.Data = _mapper.Map<List<ListVechileModelsDto>>(vechiles);
+            response.Data = _mapper.Map<List<ListGetCountriesDto>>(vechiles);
             return response;
         }
 

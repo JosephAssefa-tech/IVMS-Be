@@ -8,5 +8,6 @@ namespace VechileManagement.Application.Features.VechileModel.Requests
 {
     public class GetVechileModelsRequest : IRequest<GetVechilesModelResponse>
     {
+
     }
 }

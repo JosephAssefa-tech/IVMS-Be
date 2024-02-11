@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using VechileManagement.Application.Features.Countries.DTOs;
 using VechileManagement.Application.Features.Customers.DTOs;
 using VechileManagement.Application.Features.Factories.DTOs;
 using VechileManagement.Application.Features.Orders.DTOs;
@@ -20,10 +21,20 @@ namespace VechileManagement.Application.Profiles
             CreateMap<Order, UpdateOrderDTO>().ReverseMap();
 
             CreateMap<VehicleModel, CreateVechileModelDto>().ReverseMap();
-            CreateMap<VehicleModel, ListVechileModelsDto>().ReverseMap();
+            CreateMap<VehicleModel, ListGetCountriesDto>().ReverseMap();
 
             CreateMap<VehicleModel, UpdateVechileModelDto>().ReverseMap();
             CreateMap<Factory, ListFactoryDto>().ReverseMap();
+            CreateMap<VehicleModel, VechileModelDto>().ReverseMap();
+            CreateMap<Factory, FactoryDto>().ReverseMap();
+            CreateMap<Factory, CreateFactoryDto>().ReverseMap();
+            CreateMap<Factory, ListFactoryDto>().ReverseMap();
+            CreateMap<Factory, UpdateFactoryDto>().ReverseMap();
+            CreateMap<Country, CountryDto>().ReverseMap();
+            CreateMap<Country, ListCountryDto>().ReverseMap();
+            CreateMap<Country, UpdateCountryDto>().ReverseMap();
+            CreateMap<Country, CreateCountryDto>().ReverseMap();
+
 
         }
     }

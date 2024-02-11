@@ -8,6 +8,6 @@ namespace VechileManagement.Application.Features.VechileModel.Responses
 {
     public class GetVechilesModelResponse : BaseResponse
     {
-        public List<ListVechileModelsDto> Data { get; set; }
+        public List<ListGetCountriesDto> Data { get; set; }
     }
 }

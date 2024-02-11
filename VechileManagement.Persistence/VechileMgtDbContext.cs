@@ -17,7 +17,7 @@ namespace VechileManagement.Persistence
         public DbSet<Order> Orders { get; set; }
         public DbSet<VehicleModel> VehicleModels { get; set; }
         public DbSet<Factory> Factories { get; set; }
-
+        public DbSet<Country> Countries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -46,10 +46,10 @@ namespace VechileManagement.Persistence
         }
         private static void SeedFactory(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), FactoryName = "Hyundai" });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), FactoryName = "Toyota" });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), FactoryName = "Suzuki" });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), FactoryName = "Ford" });
+            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), FactoryNameAmh = "ሀዩንዳይ", FactoryNameEng="Hyndai"   });
+            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), FactoryNameAmh = "ቶዮታ", FactoryNameEng = "Toyota" });
+            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), FactoryNameAmh = "ሱዙኪ", FactoryNameEng = "Suzuki" });
+            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), FactoryNameAmh = "ፎርድ", FactoryNameEng = "Ford" });
 
 
         }

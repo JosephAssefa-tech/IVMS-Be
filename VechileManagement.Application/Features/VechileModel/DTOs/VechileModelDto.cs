@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VechileManagement.Application.Features.Factories.DTOs;
 using VechileManagement.Domain.Entities;
 using VechileManagement.Domain.Enums;
 
@@ -29,7 +30,7 @@ namespace VechileManagement.Application.Features.VechileModel.DTOs
         // Foreign key property
         public Guid FactoryId { get; set; }
         // Navigation property
-       // public Factory Factory { get; set; }
+        public FactoryDto Factory { get; set; }
         public FuelType FuelType { get; set; }
     }
 }

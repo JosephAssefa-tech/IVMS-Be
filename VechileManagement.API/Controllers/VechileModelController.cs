@@ -4,6 +4,8 @@ using VechileManagement.Application.Features.VechileModel.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VechileManagement.Domain.Enums;
+using Azure;
 
 namespace VechileManagement.API.Controllers
 {
@@ -38,6 +40,45 @@ namespace VechileManagement.API.Controllers
             return Ok(results);
         }
 
+        [HttpGet("vechileFilter", Name = ApiActions.GetVechileModel)]
+        public async Task<ActionResult<GetVechileModelResponse>> GetVechileModel(
+     string model,
+     Guid factoryId,
+     FuelType fuelType,
+     [FromQuery] DateTime? From,
+     [FromQuery] DateTime? To)
+        {
+            var request = new GetVechileModelRequest
+            {
+                Model = model,
+                FactoryId = factoryId,
+                FuelType = fuelType,
+                From = From,
+                To = To
+            };
+
+            var results = await _mediator.Send(request);
+            return Ok(results);
+        }
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadExcelData(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("File is empty");
+            }
+
+            try
+            {
+                await _mediator.Send(new UploadExcelDataCommand { File = file });
+                return Ok("File uploaded successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
         [HttpPut("vechile", Name = ApiActions.UpdateVechileModels)]
         public async Task<ActionResult<UpdateVechileModelResponse>> UpdateVechileModel([FromBody] UpdateVechileModelDto updateDto)
         {
@@ -50,7 +91,7 @@ namespace VechileManagement.API.Controllers
                 result.Data);
         }
         [HttpDelete("vechile/{id}", Name = ApiActions.DeleteVechileModels)]
-        public async Task<ActionResult<UpdateVechileModelResponse>> DeleteVechileModels(Guid id)
+        public async Task<ActionResult<DeleteVechileModelResponse>> DeleteVechileModels(Guid id)
         {
             var command = new DeleteVechileModelCommand { Id = id };
             var result = await _mediator.Send(command);

@@ -10,7 +10,7 @@ namespace VechileManagement.Application.Contracts.Persitence
         IVechileModelRepository VechileModelRepository { get; }
         IFactoryRepository FactoryRepository { get; }
 
-
+        ICountryRepository countryRepository { get; }
 
         Task Save();
     }
