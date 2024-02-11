@@ -20,6 +20,8 @@ namespace VechileManagement.Persistence
         public DbSet<Country> Countries { get; set; }
         public DbSet<Inflation> Inflations { get; set; }
         public DbSet<Depreciation> Depreciations { get; set; }
+        public DbSet<FactoryServiceTypeParameter> FactoryServiceTypeParameters { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

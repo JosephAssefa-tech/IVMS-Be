@@ -5,13 +5,10 @@ using VechileManagement.Domain.Common;
 
 namespace VechileManagement.Domain.Entities
 {
-    public class Depreciation : BaseAuditableEntity
+    public class FactoryServiceTypeParameter : BaseAuditableEntity
     {
- 
+        public Guid FactoryId { get; set; }
         public Guid VehicleServiceTypeId { get; set; }
-        public int ServiceYear { get; set; }
-       
-
-
+        public int Point { get; set; }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using VechileManagement.Application.Contracts.Persitence;
 using VechileManagement.Application.Features.Countries.DTOs;
 using VechileManagement.Application.Features.Customers.DTOs;
 using VechileManagement.Application.Features.Depreciations.DTOs;
 using VechileManagement.Application.Features.Factories.DTOs;
+using VechileManagement.Application.Features.FactoryServiceTypeParameters.DTOs;
 using VechileManagement.Application.Features.Inflations.DTOs;
 using VechileManagement.Application.Features.Orders.DTOs;
 using VechileManagement.Application.Features.VechileModel.DTOs;
@@ -46,6 +48,15 @@ namespace VechileManagement.Application.Profiles
             CreateMap<Depreciation, DeperciationDto>().ReverseMap();
             CreateMap<Depreciation, ListDeperciationDto>().ReverseMap();
             CreateMap<Depreciation, UpdateDeperciationDto>().ReverseMap();
+
+            CreateMap<FactoryServiceTypeParameter, CreateFactoryServiceTypeParameterDto>().ReverseMap();
+            CreateMap<FactoryServiceTypeParameter, FactoryServiceTypeParameterDto>().ReverseMap();
+            CreateMap<FactoryServiceTypeParameter, ListFactoryServiceTypeParameterDto>().ReverseMap();
+            CreateMap<FactoryServiceTypeParameter, UpdateFactoryServiceTypeParameterDto>().ReverseMap();
+
+
+
+            
         }
     }
 }

@@ -53,7 +53,7 @@ namespace VechileManagement.Application.Features.Depreciations.Handlers.Command
                 return response;
             }
             existingDepreciation.ServiceYear = request.UpdateDeperciationDto.ServiceYear;
-            existingDepreciation.Point = request.UpdateDeperciationDto.Point;
+
             existingDepreciation.VehicleServiceTypeId = request.UpdateDeperciationDto.VehicleServiceTypeId;
 
             // Save the updated event

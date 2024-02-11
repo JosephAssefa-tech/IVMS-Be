@@ -13,7 +13,7 @@ namespace VechileManagement.Persistence.Repositories
         private ICountryRepository _CountryRepository;
         private IinflationRepository _InflationRepository;
         private IDeperciationRepository _deperciationRepository;
-
+        private IFactoryServiceTypeParameterRepository _FactoryServiceTypeParameterRepository;
         public UnitOfWork(VechileMgtDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -41,7 +41,11 @@ namespace VechileManagement.Persistence.Repositories
         public IDeperciationRepository deperciationRepository =>
             _deperciationRepository ??= new DeperciationRepository(_dbContext);
 
+        public IFactoryServiceTypeParameterRepository FactoryServiceTypeParameterRepository =>
+           _FactoryServiceTypeParameterRepository ??= new FactoryServiceTypeParameterRepository(_dbContext);
 
+
+        
         public void Dispose()
         {
             _dbContext.Dispose();

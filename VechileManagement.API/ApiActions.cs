@@ -40,6 +40,11 @@
         public const string UpdateDepreciation = "UpdateDepreciation";
         public const string GetDepreciations = "GetDepreciations";
 
+        public const string CreateFactoryServiceType = "CreateFactoryServiceType";
+        public const string DeleteFactoryServiceType = "DeleteFactoryServiceType";
+        public const string UpdateFactoryServiceType = "UpdateFactoryServiceType";
+        public const string GetFactoryServiceType = "GetFactoryServiceType";
+
 
 
     }
