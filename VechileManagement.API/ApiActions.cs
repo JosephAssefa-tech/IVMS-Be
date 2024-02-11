@@ -18,6 +18,9 @@
         public const string DeleteVechileModels = "DeleteVechileModels";
 
         public const string GetFactories = "GetFactories";
+        public const string CreateFactory = "CreateFactory";
+        public const string UpdateFactory = "UpdateFactory";
+        public const string DeleteFactory = "DeleteFactory";
         public const string GetVechileModel = "GetVechileModel";
 
         public const string CreateCountry = "CreateCountry";
