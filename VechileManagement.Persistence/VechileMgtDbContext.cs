@@ -18,10 +18,12 @@ namespace VechileManagement.Persistence
         public DbSet<VehicleModel> VehicleModels { get; set; }
         public DbSet<Factory> Factories { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Inflation> Inflations { get; set; }
+        public DbSet<Depreciation> Depreciations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            SeedFactory(modelBuilder);
+            SeedVechileServiceType(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof
                 (VechileMgtDbContext).Assembly);
             // possible to add here seeded data through migration
@@ -44,12 +46,12 @@ namespace VechileManagement.Persistence
             }
             return base.SaveChangesAsync(cancellationToken);
         }
-        private static void SeedFactory(ModelBuilder modelBuilder)
+        private static void SeedVechileServiceType(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), FactoryNameAmh = "ሀዩንዳይ", FactoryNameEng="Hyndai"   });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), FactoryNameAmh = "ቶዮታ", FactoryNameEng = "Toyota" });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), FactoryNameAmh = "ሱዙኪ", FactoryNameEng = "Suzuki" });
-            modelBuilder.Entity<Factory>().HasData(new Factory() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), FactoryNameAmh = "ፎርድ", FactoryNameEng = "Ford" });
+            modelBuilder.Entity<VehicleServiceType>().HasData(new VehicleServiceType() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), Code = 22, DescriptionEng = "Auto", DescriptionAmh = "የቤት" , Point =6});
+            modelBuilder.Entity<VehicleServiceType>().HasData(new VehicleServiceType() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), Code = 33, DescriptionEng = "Heavy", DescriptionAmh="ደረቅ" , Point =8});
+            modelBuilder.Entity<VehicleServiceType>().HasData(new VehicleServiceType() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), Code = 44, DescriptionEng = "Public", DescriptionAmh = "ሀዝብ", Point=9 });
+            modelBuilder.Entity<VehicleServiceType>().HasData(new VehicleServiceType() { Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), Code = 55, DescriptionEng = "Liq", DescriptionAmh = "ፈሳሽ" , Point =56});
 
 
         }

@@ -2,6 +2,7 @@
 using VechileManagement.Application.Features.Countries.DTOs;
 using VechileManagement.Application.Features.Customers.DTOs;
 using VechileManagement.Application.Features.Factories.DTOs;
+using VechileManagement.Application.Features.Inflations.DTOs;
 using VechileManagement.Application.Features.Orders.DTOs;
 using VechileManagement.Application.Features.VechileModel.DTOs;
 using VechileManagement.Domain.Entities;
@@ -34,6 +35,10 @@ namespace VechileManagement.Application.Profiles
             CreateMap<Country, ListCountryDto>().ReverseMap();
             CreateMap<Country, UpdateCountryDto>().ReverseMap();
             CreateMap<Country, CreateCountryDto>().ReverseMap();
+            CreateMap<Inflation, InflationDto>().ReverseMap();
+            CreateMap<Inflation, CreateInflationDto>().ReverseMap();
+            CreateMap<Inflation, ListInflationDto>().ReverseMap();
+            CreateMap<Inflation, UpdateInflationDto>().ReverseMap();
 
 
         }

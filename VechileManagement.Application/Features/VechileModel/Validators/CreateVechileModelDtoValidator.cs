@@ -12,6 +12,7 @@ namespace VechileManagement.Application.Features.VechileModel.Validators
                 .NotEmpty().WithMessage("{Model} is required.")
                 .NotNull()
                 .MaximumLength(50).WithMessage("{VechileModel} can not exceed more than 50 characters");
+           
             RuleFor(p => p.Width)
                .NotEmpty().WithMessage("{Width} is required.")
                .NotNull();

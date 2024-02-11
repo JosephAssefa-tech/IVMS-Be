@@ -58,11 +58,32 @@ namespace VechileManagement.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Depreciations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VehicleServiceTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ServiceYear = table.Column<int>(type: "int", nullable: false),
+                    Point = table.Column<int>(type: "int", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Depreciations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Factories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FactoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactoryNameAmh = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactoryNameEng = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -72,6 +93,44 @@ namespace VechileManagement.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Factories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Inflations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ServiceYear = table.Column<int>(type: "int", nullable: false),
+                    Point = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Inflations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VehicleServiceType",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Code = table.Column<int>(type: "int", nullable: false),
+                    DescriptionAmh = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescriptionEng = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Point = table.Column<float>(type: "real", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VehicleServiceType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,14 +201,14 @@ namespace VechileManagement.Persistence.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Factories",
-                columns: new[] { "Id", "Created", "CreatedBy", "FactoryName", "IsDeleted", "LastModified", "LastModifiedBy" },
+                table: "VehicleServiceType",
+                columns: new[] { "Id", "Code", "Created", "CreatedBy", "DescriptionAmh", "DescriptionEng", "IsDeleted", "LastModified", "LastModifiedBy", "Point" },
                 values: new object[,]
                 {
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Hyundai", false, null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Toyota", false, null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Suzuki", false, null, null },
-                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Ford", false, null, null }
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"), 22, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "የቤት", "Auto", false, null, null, 6f },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"), 33, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "ደረቅ", "Heavy", false, null, null, 8f },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"), 44, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "ሀዝብ", "Public", false, null, null, 9f },
+                    { new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"), 55, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "ፈሳሽ", "Liq", false, null, null, 56f }
                 });
 
             migrationBuilder.CreateIndex(
@@ -170,10 +229,19 @@ namespace VechileManagement.Persistence.Migrations
                 name: "Countries");
 
             migrationBuilder.DropTable(
+                name: "Depreciations");
+
+            migrationBuilder.DropTable(
+                name: "Inflations");
+
+            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "VehicleModels");
+
+            migrationBuilder.DropTable(
+                name: "VehicleServiceType");
 
             migrationBuilder.DropTable(
                 name: "Customers");

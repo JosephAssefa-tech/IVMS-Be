@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VechileManagement.Domain.Common;
 
-namespace VechileManagement.Domain.Entities
+namespace VechileManagement.Application.Features.Inflations.DTOs
 {
-    public class Inflation : BaseAuditableEntity
+    public class InflationDto
     {
+
         public int ServiceYear { get; set; }
         public decimal Point { get; set; }
     }

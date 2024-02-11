@@ -29,5 +29,12 @@
         public const string GetCountry = "GetCountry";
         public const string GetCountries = "GetCountries";
 
+        public const string CreateInflation = "CreateInflation";
+        public const string DeleteInflations = "DeleteInflation";
+        public const string UpdateInflation = "UpdateInflation";
+        public const string GetInflation = "GetInflation";
+        public const string GetInflations = "GetInflations";
+
+
     }
 }

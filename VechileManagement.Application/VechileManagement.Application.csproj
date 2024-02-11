@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Factories\Handlers\Queries\" />
-    <Folder Include="Features\Factories\Requests\Requests\" />
+    <Folder Include="Features\Factories\Requests\Queries\" />
     <Folder Include="Features\Orders\Handlers\" />
     <Folder Include="Features\Orders\Responses\" />
     <Folder Include="Features\Orders\Requests\" />

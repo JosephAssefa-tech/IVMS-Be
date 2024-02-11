@@ -8,7 +8,7 @@ namespace VechileManagement.Application.Features.Factories.DTOs
     public class UpdateFactoryDto :BaseDTO
     {
         public string FactoryNameAmh { get; set; }
-        public string FactoryNameEng { get; }
+        public string FactoryNameEng { get; set; }
         public decimal Code { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using VechileManagement.Persistence;
 namespace VechileManagement.Persistence.Migrations
 {
     [DbContext(typeof(VechileMgtDbContext))]
-    [Migration("20240210130007_initial")]
+    [Migration("20240211144909_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -103,7 +103,7 @@ namespace VechileManagement.Persistence.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("VechileManagement.Domain.Entities.Factory", b =>
+            modelBuilder.Entity("VechileManagement.Domain.Entities.Depreciation", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,7 +115,49 @@ namespace VechileManagement.Persistence.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FactoryName")
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Point")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceYear")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("VehicleServiceTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Depreciations");
+                });
+
+            modelBuilder.Entity("VechileManagement.Domain.Entities.Factory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Code")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FactoryNameAmh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FactoryNameEng")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -131,36 +173,38 @@ namespace VechileManagement.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Factories");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"),
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Hyundai",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"),
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Toyota",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"),
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Suzuki",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"),
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FactoryName = "Ford",
-                            IsDeleted = false
-                        });
+            modelBuilder.Entity("VechileManagement.Domain.Entities.Inflation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Point")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ServiceYear")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Inflations");
                 });
 
             modelBuilder.Entity("VechileManagement.Domain.Entities.Order", b =>
@@ -288,6 +332,88 @@ namespace VechileManagement.Persistence.Migrations
                     b.HasIndex("FactoryId");
 
                     b.ToTable("VehicleModels");
+                });
+
+            modelBuilder.Entity("VechileManagement.Domain.Entities.VehicleServiceType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Code")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionAmh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescriptionEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Point")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VehicleServiceType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5a"),
+                            Code = 22,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionAmh = "የቤት",
+                            DescriptionEng = "Auto",
+                            IsDeleted = false,
+                            Point = 6f
+                        },
+                        new
+                        {
+                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5b"),
+                            Code = 33,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionAmh = "ደረቅ",
+                            DescriptionEng = "Heavy",
+                            IsDeleted = false,
+                            Point = 8f
+                        },
+                        new
+                        {
+                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5c"),
+                            Code = 44,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionAmh = "ሀዝብ",
+                            DescriptionEng = "Public",
+                            IsDeleted = false,
+                            Point = 9f
+                        },
+                        new
+                        {
+                            Id = new Guid("027b4ed4-649e-4ff9-8c85-4cdc4dfada5d"),
+                            Code = 55,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionAmh = "ፈሳሽ",
+                            DescriptionEng = "Liq",
+                            IsDeleted = false,
+                            Point = 56f
+                        });
                 });
 
             modelBuilder.Entity("VechileManagement.Domain.Entities.Customer", b =>

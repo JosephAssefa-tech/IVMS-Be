@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace VechileManagement.Application.Features.VechileModel.Handlers.Commands
 {
+    
     public class CreateVechileModelCommandHandler : IRequestHandler<CreateVechileModelCommand, CreateVechileModelResponse>
     {
         private readonly IUnitOfWork _unitOfWork;

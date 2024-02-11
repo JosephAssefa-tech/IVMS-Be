@@ -11,7 +11,7 @@ namespace VechileManagement.Application.Contracts.Persitence
         IFactoryRepository FactoryRepository { get; }
 
         ICountryRepository countryRepository { get; }
-
+        IinflationRepository InflationRepository { get; }
         Task Save();
     }
 }
