@@ -15,6 +15,8 @@ namespace VechileManagement.Application.Features.Countries.VAlidators
                 .NotEmpty().WithMessage("{CountryNameAmh} is required.")
                 .NotNull()
                 .MaximumLength(50).WithMessage("{CountryNameAmh} can not exceed more than 50 characters");
+          
+            
             RuleFor(p => p.CountryNameEng)
                  .NotEmpty().WithMessage("{CountryNameEng} is required.")
                  .NotNull()

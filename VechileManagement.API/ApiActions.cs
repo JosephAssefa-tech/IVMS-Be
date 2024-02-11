@@ -35,6 +35,12 @@
         public const string GetInflation = "GetInflation";
         public const string GetInflations = "GetInflations";
 
+        public const string CreateDepreciation = "CreateDepreciation";
+        public const string DeleteDepreciation = "DeleteDepreciation";
+        public const string UpdateDepreciation = "UpdateDepreciation";
+        public const string GetDepreciations = "GetDepreciations";
+
+
 
     }
 }

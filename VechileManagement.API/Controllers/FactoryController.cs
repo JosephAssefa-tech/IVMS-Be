@@ -53,7 +53,7 @@ namespace VechileManagement.API.Controllers
             return Created(new Uri($"/factory/{updateDto.Id}", UriKind.Relative),
                 result.Data);
         }
-        [HttpDelete("delete/{id}", Name = ApiActions.DeleteFactory)]
+        [HttpDelete("factory/{id}", Name = ApiActions.DeleteFactory)]
         public async Task<ActionResult<DeleteFactoryResponse>> DeleteFactory(Guid id)
         {
             var command = new DeleteFactoryCommand { Id = id };

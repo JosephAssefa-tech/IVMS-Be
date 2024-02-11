@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using VechileManagement.Application.Features.Countries.DTOs;
 using VechileManagement.Application.Features.Customers.DTOs;
+using VechileManagement.Application.Features.Depreciations.DTOs;
 using VechileManagement.Application.Features.Factories.DTOs;
 using VechileManagement.Application.Features.Inflations.DTOs;
 using VechileManagement.Application.Features.Orders.DTOs;
@@ -41,6 +42,10 @@ namespace VechileManagement.Application.Profiles
             CreateMap<Inflation, UpdateInflationDto>().ReverseMap();
 
 
+            CreateMap<Depreciation, CreateDeperciationDto>().ReverseMap();
+            CreateMap<Depreciation, DeperciationDto>().ReverseMap();
+            CreateMap<Depreciation, ListDeperciationDto>().ReverseMap();
+            CreateMap<Depreciation, UpdateDeperciationDto>().ReverseMap();
         }
     }
 }

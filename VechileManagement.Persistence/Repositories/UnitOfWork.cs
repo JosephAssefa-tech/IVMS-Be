@@ -12,6 +12,7 @@ namespace VechileManagement.Persistence.Repositories
         private IFactoryRepository _FactoryRepository;
         private ICountryRepository _CountryRepository;
         private IinflationRepository _InflationRepository;
+        private IDeperciationRepository _deperciationRepository;
 
         public UnitOfWork(VechileMgtDbContext dbContext)
         {
@@ -35,6 +36,10 @@ namespace VechileManagement.Persistence.Repositories
 
         public IinflationRepository InflationRepository =>
             _InflationRepository ??= new InflationRepository(_dbContext);
+
+
+        public IDeperciationRepository deperciationRepository =>
+            _deperciationRepository ??= new DeperciationRepository(_dbContext);
 
 
         public void Dispose()
